@@ -1,4 +1,4 @@
-package 문자열.연습;
+package 문자열.풀이;
 
 import java.util.Scanner;
 
