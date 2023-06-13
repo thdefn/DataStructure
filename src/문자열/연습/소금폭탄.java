@@ -16,14 +16,13 @@ public class 소금폭탄 {
 
         int secondValue = b[2] + 60 - a[2];
         int second = secondValue % 60;
-        int minuteValue = b[1] -1 + secondValue / 60 + 60 - a[1];
+        int minuteValue = b[1] - 1 + secondValue / 60 + 60 - a[1];
         int minute = minuteValue % 60;
-        int hourValue = b[0] -1 + minuteValue / 60 + 24 - a[0];
+        int hourValue = b[0] - 1 + minuteValue / 60 + 24 - a[0];
         int hour = hourValue % 24;
 
-        System.out.println(
-                String.format("%02d",hour) + ":"
-                + String.format("%02d",minute) + ":"
-                + String.format("%02d",second));
+        if (second + minute + hour == 0) hour += 24;
+
+        System.out.printf("%02d:%02d:%02d", hour, minute, second);
     }
 }
