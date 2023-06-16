@@ -10,7 +10,6 @@ public class 성지키기 {
         String[] strings = new String[N];
         for (int i = 0; i < N; i++) {
             strings[i] = sc.next();
-            System.out.println(strings[i]);
         }
         boolean[] row = new boolean[N];
         boolean[] col = new boolean[M];
@@ -25,13 +24,20 @@ public class 성지키기 {
             row[i] = isInRow;
         }
 
-        int needed = 0;
+        int rowCount = 0;
         for (boolean isIn : row) {
-            if (!isIn) needed++;
+            if(!isIn){
+                rowCount++;
+            }
         }
+
+        int colCount = 0;
         for (boolean isIn : col) {
-            if (!isIn) needed++;
+            if(!isIn){
+                colCount++;
+            }
         }
-        System.out.println(needed);
+
+        System.out.println(Math.max(rowCount, colCount));
     }
 }
