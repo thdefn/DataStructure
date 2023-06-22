@@ -2,7 +2,7 @@ package 완전탐색;
 
 import java.util.Scanner;
 
-public class N과M {
+public class N과M1 {
 
     static int N, M;
     static int[] selected;
@@ -17,10 +17,18 @@ public class N과M {
             stringBuilder.append("\n");
         } else {
             for (int cand = 1; cand <= N ; cand++) {
-                selected[k] = cand;
-                // k+1 ~ M 번을 모두 탐색하는 일을 해야 함
-                recFunc(k+1);
-                //selected[k] = 0;
+                boolean isUsed = false;
+
+                for (int i = 1; i < k; i++) {
+                    if(cand == selected[i]) isUsed = true;
+                }
+
+                if(!isUsed){
+                    selected[k] = cand;
+                    // k+1 ~ M 번을 모두 탐색하는 일을 해야 함
+                    recFunc(k+1);
+                    //selected[k] = 0;
+                }
             }
         }
     }
