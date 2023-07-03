@@ -1,6 +1,5 @@
 package 완전탐색;
 
-
 import java.util.Scanner;
 
 public class 진법변환2 {
@@ -9,21 +8,18 @@ public class 진법변환2 {
         int N = sc.nextInt();
         int B = sc.nextInt();
 
-        String answer = "";
-        String digit;
-        int remain;
-        while (N >= B) {
-            remain = N % B;
-            digit = remain < 10 ?
-                    String.valueOf(remain) : String.valueOf((char) (remain - 10 + 'A'));
-            answer = digit + answer;
+        String ans = "";
+        // 1. N을 B로 나눈 나머지를 구하고, B로 나누자
+        // 2. 이때 가장 마지막 나머지가 가장 앞 자릿값이다
+        while (N > 0) {
+            int D = N % B;
             N = N / B;
+            if (D < 10) ans += D;
+            else ans += (char) (D - 10 + 'A');
         }
-        remain = N % B;
-        digit = remain < 10 && remain > 0 ?
-                String.valueOf(remain) : String.valueOf((char) (remain - 10 + 'A'));
 
-        answer = digit + answer;
-        System.out.println(answer);
+        for (int i = ans.length() - 1; i >= 0; i--)
+            System.out.print(ans.charAt(i));
+        System.out.println();
     }
 }
