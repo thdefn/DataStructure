@@ -3,6 +3,29 @@ package 완전탐색;
 import java.util.Scanner;
 
 public class 진법변환2 {
+    public static void main2(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int N = sc.nextInt();
+        int B = sc.nextInt();
+
+        int basePower = 1;
+        int K = 0;
+        while ((long) basePower * B <= N) {
+            basePower *= B;
+            K++;
+        }
+
+        String ans = "";
+        while (N > 0) {
+            int D = N / basePower;
+            N %= basePower;
+            basePower /= B;
+            if (D < 10) ans += D;
+            else ans += (char) ('A' + D - 10);
+        }
+        System.out.println(ans);
+    }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int N = sc.nextInt();
