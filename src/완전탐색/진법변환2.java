@@ -3,6 +3,7 @@ package 완전탐색;
 import java.util.Scanner;
 
 public class 진법변환2 {
+    // O(K) = O(LogB(N)) B^K = N , K = LogB(N)
     public static void main2(String[] args) {
         Scanner sc = new Scanner(System.in);
         int N = sc.nextInt();
