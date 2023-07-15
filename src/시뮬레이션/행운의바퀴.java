@@ -4,73 +4,47 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 /**
- * HONITAVR
- * H???????
- * HO??????
- * HON?????
- * HON????R
- * HON??A?R
- * HON?TA?R
- * HONITA?R
- * HONITAVR
+ * 환형
+ * 배열의 끝과 끝이 연결된 것 처럼 활용
+ * 글자의 위치를 고정하고, 커서의 위치를 변경
+ *
+ * 선형 구조의 인덱스를 이용한 환형 구조 표현 -> 모듈로 연산
  */
 public class 행운의바퀴 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+
         int N = sc.nextInt();
         int K = sc.nextInt();
 
-        int[] times = new int[K];
-        char[] alpha = new char[K];
-        for (int i = 0; i < K; i++) {
-            times[i] = sc.nextInt();
-            alpha[i] = sc.next().charAt(0);
-        }
-
         char[] wheel = new char[N];
         Arrays.fill(wheel, '?');
-        wheel[0] = alpha[K - 1];
-        int beforeIndex = 0;
-        boolean isExist = true;
-        for (int i = K - 2; i >= 0; i--) {
-            int currentIdx = (beforeIndex + times[i + 1] % N) % N;
-
-            // 바로 전 알파벳이 현재 알파벳이면 인덱스가 같아야 한다
-            if (wheel[beforeIndex] == alpha[i] && currentIdx != beforeIndex) {
-                isExist = false;
-                break;
+        int curIndex = 0;
+        while (K-- > 0) {
+            int step = sc.nextInt();
+            char nextAlphabet = sc.next().charAt(0);
+            int nextIndex = ((curIndex - step) % N + N) % N;
+            if (wheel[nextIndex] == '?') wheel[nextIndex] = nextAlphabet;
+            else if (wheel[nextIndex] != nextAlphabet) {
+                System.out.println("!");
+                return;
             }
-            // 넣으려는 인덱스가 '?'가 아니라면 현재 알파벳과 넣으려는 인덱스의 알파벳이 같아야 한다
-            if (wheel[currentIdx] != '?' && wheel[currentIdx] != alpha[i]) {
-                isExist = false;
-                break;
-            }
-
-            // 현재 알파벳이 다른 인덱스에 있으면 안된다
-            boolean isDuplicated = false;
-            for (int j = 0; j < N; j++) {
-                if (wheel[j] == alpha[i] && j != currentIdx) {
-                    isDuplicated = true;
-                    break;
-                }
-            }
-
-            if (isDuplicated) {
-                isExist = false;
-                break;
-            }
-
-            wheel[currentIdx] = alpha[i];
-            beforeIndex = currentIdx;
+            curIndex = nextIndex;
         }
 
-        if (isExist) {
-            for (int i = 0; i < N; i++) {
-                System.out.print(wheel[i]);
+        boolean[] used = new boolean[26];
+        for (int i = 0; i < N; i++) {
+            if (wheel[i] == '?') continue;
+            if (used[wheel[i] - 'A']) {
+                System.out.println("!");
+                return;
             }
-        } else {
-            System.out.print("!");
+            used[wheel[i] - 'A'] = true;
         }
+
+        // 마지막에 기록된 인덱스부터 떨어진 순서로 출력, 인덱스 증가하는 과정에서 N이 넘는 부분은 모듈로 처리
+        for (int i = 0; i < N; i++)
+            System.out.print(wheel[(curIndex + i) % N]);
+        System.out.println();
     }
-
 }
