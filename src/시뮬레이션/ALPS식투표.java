@@ -13,15 +13,12 @@ public class ALPS식투표 {
 
         int maxScore = 0;
         int maxIndex = 0;
-        int[] answer = new int[26];
-        Arrays.fill(answer, -1);
         int cnt = 0;
         for (int i = 0; i < N; i++) {
             char c = sc.next().charAt(0);
             int numberOfVotes = sc.nextInt();
             if (numberOfVotes * 20 < X) continue;
             staffs[cnt] = c;
-            answer[c - 'A'] = 0;
             if (numberOfVotes > maxScore) {
                 maxScore = numberOfVotes;
                 maxIndex = cnt;
@@ -35,7 +32,12 @@ public class ALPS식투표 {
         char[] alpsStaff = new char[14];
         Arrays.fill(alpsStaff, staffs[maxIndex]);
         int[] alpsScore = scores[maxIndex].clone();
+
+        int[] answer = new int[26];
+        Arrays.fill(answer, -1);
+
         for (int i = 0; i < cnt; i++) {
+            answer[staffs[i] - 'A'] = 0;
             if (i == maxIndex) continue;
             // 스태프의 점수를 넣을 위치를 찾는다
             for (int j = 0; j < 14; j++) {
