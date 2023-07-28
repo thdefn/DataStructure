@@ -1,55 +1,63 @@
 package 정렬;
 
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.Scanner;
+import java.util.*;
 
+/**
+ * Map - key, value 쌍 Collection 중복된 key 는 갖지 않는다
+ * HashMap 삽입, 삭제, 조회 연산 O(1)
+ * TreeMap 삽입, 삭제, 조회 연산 O(Log(size))
+ */
 public class 베스트셀러 {
-    static class SalesRate {
-        int count;
-        String title;
-
-        SalesRate(int count, String title) {
-            this.count = count;
-            this.title = title;
-        }
-    }
-
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int N = sc.nextInt();
-        String[] titles = new String[N];
+        Map<String, Integer> titles = new HashMap<>();
+        // O(N * 1) -> HashMap 을 사용하므로 String 비교 연산 없다
         for (int i = 0; i < N; i++) {
-            titles[i] = sc.next();
+            String title = sc.next();
+            // O(N)
+            titles.put(title, titles.getOrDefault(title, 0) + 1);
         }
-        Arrays.sort(titles, new Comparator<String>() {
-            @Override
-            public int compare(String o1, String o2) {
-                return o1.compareTo(o2);
-            }
-        });
 
-        SalesRate[] rates = new SalesRate[N];
-        int cnt = 0;
-        int salesCount = 0;
+        String maxTitle = "";
         int maxCount = 0;
-        for (int i = 0; i < N - 1; i++) {
-            salesCount++;
-            if (!titles[i].equals(titles[i + 1])) {
-                rates[cnt++] = new SalesRate(salesCount, titles[i]);
-                if (salesCount > maxCount) maxCount = salesCount;
-                salesCount = 0;
+        // O(N)
+        for (Map.Entry<String, Integer> title : titles.entrySet()) {
+            String titleName = title.getKey();
+            int count = title.getValue();
+            if (count > maxCount ||
+                    (count == maxCount && titleName.compareTo(maxTitle) < 0)) {
+                maxTitle = titleName;
+                maxCount = count;
             }
         }
-        salesCount++;
-        rates[cnt++] = new SalesRate(salesCount, titles[N - 1]);
-        if (salesCount > maxCount) maxCount = salesCount;
+        System.out.println(maxTitle);
+    }
 
-        for (int i = 0; i < cnt; i++) {
-            if (rates[i].count == maxCount) {
-                System.out.println(rates[i].title);
-                break;
+    public static void main2(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        int N = sc.nextInt();
+        String[] titles = new String[N];
+        for (int i = 0; i < N; i++)
+            titles[i] = sc.next();
+
+        // O(N * Log(N))
+        Arrays.sort(titles);
+
+        String maxTitle = titles[0];
+        int maxCount = 1;
+        int currentCount = 1;
+        // O(N)
+        for (int i = 1; i < N; i++) {
+            if (!titles[i].equals(titles[i - 1]))
+                currentCount = 0;
+            currentCount++;
+            if (currentCount > maxCount) {
+                maxTitle = titles[i];
+                maxCount = currentCount;
             }
         }
+        System.out.println(maxTitle);
     }
 }
