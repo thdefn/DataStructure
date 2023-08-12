@@ -2,6 +2,11 @@ package 구간합.풀이;
 
 import java.util.Scanner;
 
+/**
+ * -3 0 0 0 0 +3 0 0 0 0
+ * 0 +1 0 0 0 0 -1 0 0 0
+ * (-3) (-3+1) (-3+1) (-3+1) (-3+1) (-3+1+3) (-3+1+3-1) (-3+1+3-1) (-3+1+3-1) (-3+1+3-1)
+ */
 public class 태상이의훈련소생활 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
