@@ -19,12 +19,13 @@ public class MergeSortedArray {
         while (cnt < n) {
             if (nums1[i] >= nums2[cnt]) {
                 // i 에 집어넣는다
-                for (int j = nums1.length - 1; j >= i + 1; j--)
+                for (int j = m; j >= i + 1; j--)
                     nums1[j] = nums1[j - 1];
                 nums1[i] = nums2[cnt++];
                 m++;
-            } else if (i >= m) {
+            } else if (i == m) {
                 nums1[i] = nums2[cnt++];
+                m++;
             }
             i++;
         }
