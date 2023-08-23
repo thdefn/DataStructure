@@ -1,5 +1,9 @@
 package leet150;
 
+/**
+ * i : 0 1 2 3
+ * m : 1 2 3 4
+ */
 public class MergeSortedArray {
     public static void main(String[] args) {
         int[] num1 = {4, 0, 0, 0, 0, 0};
@@ -11,17 +15,18 @@ public class MergeSortedArray {
 
     public static void merge(int[] nums1, int m, int[] nums2, int n) {
         int cnt = 0;
-        for (int i = 0; i < m + n; i++) {
-            if (cnt == n) break;
+        int i = 0;
+        while (cnt < n) {
             if (nums1[i] >= nums2[cnt]) {
                 // i 에 집어넣는다
                 for (int j = nums1.length - 1; j >= i + 1; j--)
                     nums1[j] = nums1[j - 1];
                 nums1[i] = nums2[cnt++];
+                m++;
+            } else if (i >= m) {
+                nums1[i] = nums2[cnt++];
             }
+            i++;
         }
-
-        for (int i = cnt; i < n; i++)
-            nums1[m + i] = nums2[i];
     }
 }
