@@ -1,4 +1,4 @@
-package leet150;
+package leet150.array;
 
 public class RemoveElement {
     public static void main(String[] args) {

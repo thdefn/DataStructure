@@ -1,4 +1,4 @@
-package leet150;
+package leet150.array;
 
 public class BestTimetoBuyandSellStock2 {
     public static void main(String[] args) {

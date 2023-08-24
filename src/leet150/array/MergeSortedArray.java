@@ -1,4 +1,4 @@
-package leet150;
+package leet150.array;
 
 /**
  * i : 0 1 2 3
