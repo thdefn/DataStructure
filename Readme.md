@@ -27,3 +27,29 @@
   - [ ]  [[Array / String] Zigzag Conversion](https://leetcode.com/problems/zigzag-conversion/?envType=study-plan-v2&envId=top-interview-150)
 </div>
 </details>
+
+
+<details>
+<summary> Two Pointers | Sliding Window | Linked List | Binary Search </summary>
+<div markdown="1">
+
+- ✅ **필수**
+  - [ ]  [[Two Pointers] Valid Palindrome](https://leetcode.com/problems/valid-palindrome/?envType=study-plan-v2&envId=top-interview-150)
+  - [ ]  [[Two Pointers] Two Sum II - Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/?envType=study-plan-v2&envId=top-interview-150)
+  - [ ]  [[Sliding Window] Minimum Size Subarray Sum](https://leetcode.com/problems/minimum-size-subarray-sum/?envType=study-plan-v2&envId=top-interview-150)
+  - [ ]  [[Sliding Window] Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/?envType=study-plan-v2&envId=top-interview-150)
+  - [ ]  [[Linked List] Linked List Cycle](https://leetcode.com/problems/linked-list-cycle/?envType=study-plan-v2&envId=top-interview-150)
+  - [ ]  [[Linked List] Add Two Numbers](https://leetcode.com/problems/add-two-numbers/?envType=study-plan-v2&envId=top-interview-150)
+  - [ ]  [[Linked List] Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/)
+  - [ ]  [[Binary Search] Search Insert Position](https://leetcode.com/problems/search-insert-position/?envType=study-plan-v2&envId=top-interview-150)
+  - [ ]  [[Binary Search] Search a 2D Matrix](https://leetcode.com/problems/search-a-2d-matrix/?envType=study-plan-v2&envId=top-interview-150)
+- ☑️ **선택**
+  - [ ]  [Linked List] Copy List with Random Pointer
+  - [ ]  [Linked List] Reverse Linked List II
+  - [ ]  [Linked List] Reverse Nodes in k-Group
+  - [ ]  [Linked List] Remove Nth Node From End of List
+  - [ ]  [Linked List] Rotate List
+  - [ ]  [Linked List] LRU Cache
+
+</div>
+</details>
