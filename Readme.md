@@ -34,11 +34,11 @@
 <div markdown="1">
 
 - ✅ **필수**
-  - [ ]  [[Two Pointers] Valid Palindrome](https://leetcode.com/problems/valid-palindrome/?envType=study-plan-v2&envId=top-interview-150)
-  - [ ]  [[Two Pointers] Two Sum II - Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/?envType=study-plan-v2&envId=top-interview-150)
-  - [ ]  [[Sliding Window] Minimum Size Subarray Sum](https://leetcode.com/problems/minimum-size-subarray-sum/?envType=study-plan-v2&envId=top-interview-150)
-  - [ ]  [[Sliding Window] Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/?envType=study-plan-v2&envId=top-interview-150)
-  - [ ]  [[Linked List] Linked List Cycle](https://leetcode.com/problems/linked-list-cycle/?envType=study-plan-v2&envId=top-interview-150)
+  - [x]  [[Two Pointers] Valid Palindrome](https://leetcode.com/problems/valid-palindrome/?envType=study-plan-v2&envId=top-interview-150)
+  - [x]  [[Two Pointers] Two Sum II - Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/?envType=study-plan-v2&envId=top-interview-150)
+  - [x]  [[Sliding Window] Minimum Size Subarray Sum](https://leetcode.com/problems/minimum-size-subarray-sum/?envType=study-plan-v2&envId=top-interview-150)
+  - [x]  [[Sliding Window] Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/?envType=study-plan-v2&envId=top-interview-150)
+  - [x]  [[Linked List] Linked List Cycle](https://leetcode.com/problems/linked-list-cycle/?envType=study-plan-v2&envId=top-interview-150)
   - [ ]  [[Linked List] Add Two Numbers](https://leetcode.com/problems/add-two-numbers/?envType=study-plan-v2&envId=top-interview-150)
   - [ ]  [[Linked List] Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/)
   - [ ]  [[Binary Search] Search Insert Position](https://leetcode.com/problems/search-insert-position/?envType=study-plan-v2&envId=top-interview-150)
