@@ -3,7 +3,7 @@ package leet150.slidingwindow;
 
 public class LongestSubstringWithoutRepeatingCharacters {
     public static void main(String[] args) {
-        System.out.println(lengthOfLongestSubstring("pwwkew"));
+        System.out.println(lengthOfLongestSubstring("au"));
     }
 
     public static int lengthOfLongestSubstring(String s) {
@@ -14,17 +14,18 @@ public class LongestSubstringWithoutRepeatingCharacters {
         int max = Integer.MIN_VALUE;
 
         while (right <= s.length()) {
-            String temp = s.substring(left, right);
-            boolean isDuplicated = false;
-            for (int i = 0; i < temp.length(); i++) {
-                if (temp.indexOf(temp.charAt(i), i + 1) > 0){
-                    isDuplicated = true;
+            boolean isDup = false;
+            for (int i = left; i < right; i++) {
+                int idx = s.indexOf(s.charAt(i), i + 1);
+                if (idx > 0 && idx < right) {
+                    isDup = true;
+                    break;
                 }
             }
-            if(isDuplicated) left++;
+            if (isDup) left++;
             else {
+                max = Math.max(max, right - left);
                 right++;
-                max = Math.max(max, temp.length());
             }
         }
         return max;
