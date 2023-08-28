@@ -2,8 +2,8 @@ package leet150.binarysearch;
 
 public class Searcha2DMatrix {
     public static boolean searchMatrix(int[][] matrix, int target) {
-        int r = matrix.length; // 1
-        int c = matrix[0].length; // 1
+        int r = matrix.length;
+        int c = matrix[0].length;
         int left = 0;
         int right = r * c - 1;
 
