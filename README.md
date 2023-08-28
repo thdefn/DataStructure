@@ -41,7 +41,7 @@
   - [x]  [[Linked List] Linked List Cycle](https://leetcode.com/problems/linked-list-cycle/?envType=study-plan-v2&envId=top-interview-150)
   - [x]  [[Linked List] Add Two Numbers](https://leetcode.com/problems/add-two-numbers/?envType=study-plan-v2&envId=top-interview-150)
   - [x]  [[Linked List] Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/)
-  - [ ]  [[Binary Search] Search Insert Position](https://leetcode.com/problems/search-insert-position/?envType=study-plan-v2&envId=top-interview-150)
+  - [x]  [[Binary Search] Search Insert Position](https://leetcode.com/problems/search-insert-position/?envType=study-plan-v2&envId=top-interview-150)
   - [ ]  [[Binary Search] Search a 2D Matrix](https://leetcode.com/problems/search-a-2d-matrix/?envType=study-plan-v2&envId=top-interview-150)
 - ☑️ **선택**
   - [ ]  [Linked List] Copy List with Random Pointer
