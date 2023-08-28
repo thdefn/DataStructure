@@ -4,14 +4,14 @@ import java.util.Locale;
 
 public class ValidPalindrome {
     public static void main(String[] args) {
-        String s = "0P";
+        String s = "race a car";
         System.out.println(isPalindrome(s));
     }
 
     public static boolean isPalindrome(String s) {
         int i = 0;
         int j = s.length() - 1;
-        s = s.toUpperCase(Locale.ROOT);
+        s = s.toLowerCase();
         while (i < j) {
             char a = s.charAt(i);
             char b = s.charAt(j);
@@ -34,7 +34,7 @@ public class ValidPalindrome {
     }
 
     public static boolean isValidCharacter(char ch) {
-        if (ch >= 'A' && ch <= 'Z') {
+        if (ch >= 'a' && ch <= 'z') {
             return true;
         } else return ch >= '0' && ch <= '9';
     }
