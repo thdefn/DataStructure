@@ -1,5 +1,7 @@
 package leet150.twopointers;
 
+import java.util.Locale;
+
 public class ValidPalindrome {
     public static void main(String[] args) {
         String s = "0P";
@@ -9,9 +11,10 @@ public class ValidPalindrome {
     public static boolean isPalindrome(String s) {
         int i = 0;
         int j = s.length() - 1;
+        s = s.toUpperCase(Locale.ROOT);
         while (i < j) {
-            char a = Character.toUpperCase(s.charAt(i));
-            char b = Character.toUpperCase(s.charAt(j));
+            char a = s.charAt(i);
+            char b = s.charAt(j);
             if (!isValidCharacter(a)) {
                 i++;
                 continue;
