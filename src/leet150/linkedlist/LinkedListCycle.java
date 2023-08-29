@@ -29,11 +29,9 @@ public class LinkedListCycle {
         Set<ListNode> nextNodes = new HashSet<>();
         while (cur != null){
             cur = cur.next;
-            if (nextNodes.contains(cur)) break;
-            nextNodes.add(cur);
+            if (!nextNodes.add(cur)) return true;
         }
-        if(cur == null) return false;
-        return true;
+        return false;
     }
 
     public static void main(String[] args) {

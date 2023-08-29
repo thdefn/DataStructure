@@ -1,7 +1,5 @@
 package leet150.twopointers;
 
-import java.util.Locale;
-
 public class ValidPalindrome {
     public static void main(String[] args) {
         String s = "race a car";

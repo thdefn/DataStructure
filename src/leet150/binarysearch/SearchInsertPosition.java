@@ -8,6 +8,7 @@ public class SearchInsertPosition {
     public static int searchInsert(int[] nums, int target) {
         if (nums[nums.length - 1] < target)
             return nums.length;
+
         int left = 0;
         int right = nums.length - 1;
         int idx = 0;

@@ -3,18 +3,18 @@ package leet150.slidingwindow;
 public class MinimumSizeSubarraySum {
 
     public static int minSubArrayLen(int target, int[] nums) {
-        if (nums.length == 0) return 0;
         int left = 0;
         int right = 0;
         int sum = 0;
         int min = Integer.MAX_VALUE;
 
         while (right < nums.length) {
-            sum += nums[right++];
+            sum = sum + nums[right];
             while (sum >= target) {
-                min = Math.min(min, right - left);
-                sum -= nums[left++];
+                min = Math.min(min, right - left + 1);
+                sum = sum - nums[left++];
             }
+            right++;
         }
         if (min == Integer.MAX_VALUE) return 0;
         return min;

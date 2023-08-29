@@ -34,15 +34,14 @@
 <div markdown="1">
 
 - ✅ **필수**
-  - [x]  [[Two Pointers] Valid Palindrome](https://leetcode.com/problems/valid-palindrome/?envType=study-plan-v2&envId=top-interview-150)
-  - [x]  [[Two Pointers] Two Sum II - Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/?envType=study-plan-v2&envId=top-interview-150)
-  - [x]  [[Sliding Window] Minimum Size Subarray Sum](https://leetcode.com/problems/minimum-size-subarray-sum/?envType=study-plan-v2&envId=top-interview-150)
-  - [x]  [[Sliding Window] Longest Substring Without Repeating Characters](https://leetcode.com/problems/longest-substring-without-repeating-characters/?envType=study-plan-v2&envId=top-interview-150)
-  - [x]  [[Linked List] Linked List Cycle](https://leetcode.com/problems/linked-list-cycle/?envType=study-plan-v2&envId=top-interview-150)
-  - [x]  [[Linked List] Add Two Numbers](https://leetcode.com/problems/add-two-numbers/?envType=study-plan-v2&envId=top-interview-150)
-  - [x]  [[Linked List] Merge Two Sorted Lists](https://leetcode.com/problems/merge-two-sorted-lists/)
-  - [x]  [[Binary Search] Search Insert Position](https://leetcode.com/problems/search-insert-position/?envType=study-plan-v2&envId=top-interview-150)
-  - [x]  [[Binary Search] Search a 2D Matrix](https://leetcode.com/problems/search-a-2d-matrix/?envType=study-plan-v2&envId=top-interview-150)
+  - [x]  [[Two Pointers] Valid Palindrome](https://velog.io/@haden/LeetCode-125.-Valid-Palindrome)
+  - [x]  [[Two Pointers] Two Sum II - Input Array Is Sorted](https://velog.io/@haden/LeetCode-167.-Two-Sum-II-Input-Array-Is-Sorted)
+  - [x]  [[Sliding Window] Minimum Size Subarray Sum](https://velog.io/@haden/LeetCode-209.-Minimum-Size-Subarray-Sum)
+  - [x]  [[Sliding Window] Longest Substring Without Repeating Characters](https://velog.io/@haden/LeetCode-3.-Longest-Substring-Without-Repeating-Characters)
+  - [x]  [[Linked List] Linked List Cycle](https://velog.io/@haden/LeetCode-141.-Linked-List-Cycle)
+  - [x]  [[Linked List] Add Two Numbers](https://velog.io/@haden/LeetCode-2.-Add-Two-Numbers)
+  - [x]  [[Linked List] Merge Two Sorted Lists](https://velog.io/@haden/LeetCode-21.-Merge-Two-Sorted-Lists)
+  - [x]  [[Binary Search] Search Insert Position](https://velog.io/@haden/LeetCode-35.-Search-Insert-Position)
 - ☑️ **선택**
   - [ ]  [Linked List] Copy List with Random Pointer
   - [ ]  [Linked List] Reverse Linked List II
