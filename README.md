@@ -52,3 +52,25 @@
 
 </div>
 </details>
+
+
+<details>
+<summary> Stack | Hash Table </summary>
+<div markdown="1">
+
+- ✅ **필수**
+  - [x]  [[Stack] Min Stack](https://leetcode.com/problems/min-stack/?envType=study-plan-v2&envId=top-interview-150)
+  - [x]  [[Stack] Evaluate Reverse Polish Notation](https://leetcode.com/problems/evaluate-reverse-polish-notation/?envType=study-plan-v2&envId=top-interview-150)
+  - [x]  [[Hash Table] Two Sum](https://leetcode.com/problems/two-sum/?envType=study-plan-v2&envId=top-interview-150)
+  - [x]  [[Hash Table] Contains Duplicate II](https://leetcode.com/problems/contains-duplicate-ii/?envType=study-plan-v2&envId=top-interview-150)
+  - [x]  [[Hash Table] Ransom Note](https://leetcode.com/problems/ransom-note/?envType=study-plan-v2&envId=top-interview-150)
+  - [x]  [[Hash Table] Valid Anagram](https://leetcode.com/problems/valid-anagram/?envType=study-plan-v2&envId=top-interview-150)
+- ☑️ **선택**
+  - [ ]  [[Hash Table] Isomorphic Strings](https://leetcode.com/problems/isomorphic-strings/?envType=study-plan-v2&envId=top-interview-150)
+  - [ ]  [[Hash Table] Word Pattern](https://leetcode.com/problems/word-pattern/?envType=study-plan-v2&envId=top-interview-150)
+  - [ ]  [[Hash Table] Group Anagrams](https://leetcode.com/problems/group-anagrams/?envType=study-plan-v2&envId=top-interview-150)
+  - [ ]  [[Hash Table] Happy Number](https://leetcode.com/problems/happy-number/?envType=study-plan-v2&envId=top-interview-150)
+  - [ ]  [[Hash Table] Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence/?envType=study-plan-v2&envId=top-interview-150)
+
+</div>
+</details>
