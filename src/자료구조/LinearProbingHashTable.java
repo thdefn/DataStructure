@@ -25,7 +25,8 @@ public class LinearProbingHashTable<K, V> extends AbstractHashTable<K, V> {
     public V get(K key) {
         int index = hash(key);
         while (table[index] != null) {
-            if (table[index].key.equals(key))
+            if (table[index].isDeleted) break;
+            if (key.equals(table[index].key))
                 return table[index].getValue();
             index++;
         }
@@ -39,6 +40,7 @@ public class LinearProbingHashTable<K, V> extends AbstractHashTable<K, V> {
 
     @Override
     public HashTable.Entry<K, V> remove(K key) {
+        if (isEmpty()) throw new RuntimeException("Hash Table is Empty");
         int index = hash(key);
         while (table[index] != null) {
             if (table[index].key.equals(key)) {
@@ -55,5 +57,22 @@ public class LinearProbingHashTable<K, V> extends AbstractHashTable<K, V> {
     @Override
     public boolean isEmpty() {
         return this.numberOfItems == 0;
+    }
+
+    public static void main(String[] args) {
+        LinearProbingHashTable<String, String> hashTable = new LinearProbingHashTable<>(10);
+        hashTable.put("강호동", "010-1111-1111");
+        hashTable.put("유재석", "010-2222-2222");
+        hashTable.put("이수근", "010-3333-3333");
+
+        System.out.println(hashTable.get("강호동"));
+        System.out.println(hashTable.get("유재석"));
+        System.out.println(hashTable.get("이수근"));
+        hashTable.remove("이수근");
+        hashTable.remove("강호동");
+        hashTable.remove("유재석");
+        System.out.println(hashTable.get("이수근"));
+        System.out.println(hashTable.get("강호동"));
+        System.out.println(hashTable.get("유재석"));
     }
 }
