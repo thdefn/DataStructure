@@ -1,4 +1,4 @@
-package 자료구조;
+package 자료구조.hashtable;
 
 public interface HashTable<K, V> {
     void put(K key, V value);
@@ -9,7 +9,6 @@ public interface HashTable<K, V> {
 
 
     interface Entry<K, V> {
-        K getKey();
-        V getValue();
+
     }
 }

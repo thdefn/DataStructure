@@ -1,4 +1,4 @@
-package 자료구조;
+package 자료구조.hashtable;
 
 public class LinearProbingHashTable<K, V> extends AbstractHashTable<K, V> {
     private Entry<K, V>[] table;
@@ -13,7 +13,7 @@ public class LinearProbingHashTable<K, V> extends AbstractHashTable<K, V> {
     @Override
     public void put(K key, V value) {
         int index = hash(key);
-        while (table[index] != null) {
+        while (index < table.length && table[index] != null) {
             if (table[index].isDeleted) break;
             index++;
         }
@@ -24,10 +24,9 @@ public class LinearProbingHashTable<K, V> extends AbstractHashTable<K, V> {
     @Override
     public V get(K key) {
         int index = hash(key);
-        while (table[index] != null) {
-            if (table[index].isDeleted) break;
+        while (index < table.length && table[index] != null) {
             if (key.equals(table[index].key))
-                return table[index].getValue();
+                return table[index].value;
             index++;
         }
         return null;
@@ -42,7 +41,7 @@ public class LinearProbingHashTable<K, V> extends AbstractHashTable<K, V> {
     public HashTable.Entry<K, V> remove(K key) {
         if (isEmpty()) throw new RuntimeException("Hash Table is Empty");
         int index = hash(key);
-        while (table[index] != null) {
+        while (index < table.length && table[index] != null) {
             if (table[index].key.equals(key)) {
                 Entry<K, V> entry = table[index];
                 table[index] = new Entry<>();
