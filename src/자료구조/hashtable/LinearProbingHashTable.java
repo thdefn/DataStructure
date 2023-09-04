@@ -14,7 +14,7 @@ public class LinearProbingHashTable<K, V> extends AbstractHashTable<K, V> {
     public void put(K key, V value) {
         int index = hash(key);
         while (index < table.length && table[index] != null) {
-            if (table[index].isDeleted) break;
+            if (table[index].isDeleted || key.equals(table[index].key)) break;
             index++;
         }
         table[index] = new Entry<>(key, value);
@@ -66,6 +66,7 @@ public class LinearProbingHashTable<K, V> extends AbstractHashTable<K, V> {
 
         System.out.println(hashTable.get("강호동"));
         System.out.println(hashTable.get("유재석"));
+        hashTable.put("이수근", "010-4444-4444");
         System.out.println(hashTable.get("이수근"));
         hashTable.remove("이수근");
         hashTable.remove("강호동");
