@@ -42,6 +42,9 @@
   - [x]  [[Linked List] Add Two Numbers](https://velog.io/@haden/LeetCode-2.-Add-Two-Numbers)
   - [x]  [[Linked List] Merge Two Sorted Lists](https://velog.io/@haden/LeetCode-21.-Merge-Two-Sorted-Lists)
   - [x]  [[Binary Search] Search Insert Position](https://velog.io/@haden/LeetCode-35.-Search-Insert-Position)
+  - [ ]  [[Binary Search] Find Peak Element](https://leetcode.com/problems/find-peak-element/?envType=study-plan-v2&envId=top-interview-150)
+  - [ ]  [[Binary Search] Search in Rotated Sorted Array](https://leetcode.com/problems/search-in-rotated-sorted-array/?envType=study-plan-v2&envId=top-interview-150)
+  - [ ]  [[Binary Search] Find Minimum in Rotated Sorted Array](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array/?envType=study-plan-v2&envId=top-interview-150)
 - ☑️ **선택**
   - [ ]  [Linked List] Copy List with Random Pointer
   - [ ]  [Linked List] Reverse Linked List II
@@ -71,6 +74,20 @@
   - [ ]  [[Hash Table] Group Anagrams](https://leetcode.com/problems/group-anagrams/?envType=study-plan-v2&envId=top-interview-150)
   - [ ]  [[Hash Table] Happy Number](https://leetcode.com/problems/happy-number/?envType=study-plan-v2&envId=top-interview-150)
   - [ ]  [[Hash Table] Longest Consecutive Sequence](https://leetcode.com/problems/longest-consecutive-sequence/?envType=study-plan-v2&envId=top-interview-150)
+
+</div>
+</details>
+
+<details>
+<summary> Tree </summary>
+<div markdown="1">
+
+- ✅ **필수**
+  - [ ]  화이트 보드에 Linked List 설명 영상 촬영
+  - [ ]  [[Binary Search Tree (BST)] Minimum Absolute Difference in BST](https://leetcode.com/problems/minimum-absolute-difference-in-bst/?envType=study-plan-v2&envId=top-interview-150)
+  - [ ]  [[Binary Search Tree (BST)] Kth Smallest Element in a BST](https://leetcode.com/problems/kth-smallest-element-in-a-bst/?envType=study-plan-v2&envId=top-interview-150)
+  - [ ]  [[Binary Tree BFS (Breadth-First Search)] Binary Tree Right Side View](https://leetcode.com/problems/binary-tree-right-side-view/?envType=study-plan-v2&envId=top-interview-150)
+  - [ ]  [[Binary Tree BFS (Breadth-First Search)] Average of Levels in Binary Tree](https://leetcode.com/problems/average-of-levels-in-binary-tree/?envType=study-plan-v2&envId=top-interview-150)
 
 </div>
 </details>
