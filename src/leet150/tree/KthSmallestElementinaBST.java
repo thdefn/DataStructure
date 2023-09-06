@@ -23,14 +23,17 @@ public class KthSmallestElementinaBST {
     }
 
     public static ArrayList<Integer> nums = new ArrayList<>();
+    public static int target;
 
     public static int kthSmallest(TreeNode root, int k) {
         nums = new ArrayList<>();
+        target = k;
         recursive(root);
         return nums.get(k - 1);
     }
 
     public static void recursive(TreeNode node) {
+        if(nums.size() == target) return;
         if (node.left != null) recursive(node.left);
         nums.add(node.val);
         if (node.right != null) recursive(node.right);
