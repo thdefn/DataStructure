@@ -84,8 +84,8 @@
 
 - ✅ **필수**
   - [ ]  화이트 보드에 Linked List 설명 영상 촬영
-  - [ ]  [[Binary Search Tree (BST)] Minimum Absolute Difference in BST](https://leetcode.com/problems/minimum-absolute-difference-in-bst/?envType=study-plan-v2&envId=top-interview-150)
-  - [ ]  [[Binary Search Tree (BST)] Kth Smallest Element in a BST](https://leetcode.com/problems/kth-smallest-element-in-a-bst/?envType=study-plan-v2&envId=top-interview-150)
+  - [x]  [[Binary Search Tree (BST)] Minimum Absolute Difference in BST](https://leetcode.com/problems/minimum-absolute-difference-in-bst/?envType=study-plan-v2&envId=top-interview-150)
+  - [x]  [[Binary Search Tree (BST)] Kth Smallest Element in a BST](https://leetcode.com/problems/kth-smallest-element-in-a-bst/?envType=study-plan-v2&envId=top-interview-150)
   - [ ]  [[Binary Tree BFS (Breadth-First Search)] Binary Tree Right Side View](https://leetcode.com/problems/binary-tree-right-side-view/?envType=study-plan-v2&envId=top-interview-150)
   - [ ]  [[Binary Tree BFS (Breadth-First Search)] Average of Levels in Binary Tree](https://leetcode.com/problems/average-of-levels-in-binary-tree/?envType=study-plan-v2&envId=top-interview-150)
 
