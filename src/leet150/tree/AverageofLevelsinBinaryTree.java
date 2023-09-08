@@ -1,6 +1,5 @@
 package leet150.tree;
 
-import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -36,14 +35,14 @@ public class AverageofLevelsinBinaryTree {
         q.offer(root);
         while (!q.isEmpty()) {
             int size = q.size();
-            double avg = 0.00000d;
+            double avg = 0;
             for (int i = 0; i < size; i++) {
                 TreeNode n = q.remove();
                 avg += n.val;
                 if (n.left != null) q.offer(n.left);
                 if (n.right != null) q.offer(n.right);
             }
-            nums.add(avg/ size);
+            nums.add(avg / size);
         }
         return nums;
     }
@@ -52,8 +51,8 @@ public class AverageofLevelsinBinaryTree {
         TreeNode left = new TreeNode(20, new TreeNode(15), new TreeNode(7));
         TreeNode right = new TreeNode(9);
         TreeNode root = new TreeNode(3, left, right);
-        for (Double d:
-             averageOfLevels(root)) {
+        for (Double d :
+                averageOfLevels(root)) {
             System.out.println(d);
         }
     }
