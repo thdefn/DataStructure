@@ -79,7 +79,7 @@
 </details>
 
 <details>
-<summary> Tree </summary>
+<summary> Tree | Trie | Heap </summary>
 <div markdown="1">
 
 - ✅ **필수**
@@ -88,6 +88,13 @@
   - [x]  [[Binary Search Tree (BST)] Kth Smallest Element in a BST](https://leetcode.com/problems/kth-smallest-element-in-a-bst/?envType=study-plan-v2&envId=top-interview-150)
   - [x]  [[Binary Tree BFS (Breadth-First Search)] Binary Tree Right Side View](https://leetcode.com/problems/binary-tree-right-side-view/?envType=study-plan-v2&envId=top-interview-150)
   - [x]  [[Binary Tree BFS (Breadth-First Search)] Average of Levels in Binary Tree](https://leetcode.com/problems/average-of-levels-in-binary-tree/?envType=study-plan-v2&envId=top-interview-150)
+  - [ ]  [[Trie] Implement Trie (Prefix Tree)](https://leetcode.com/problems/implement-trie-prefix-tree/?envType=study-plan-v2&envId=top-interview-150)
+  - [ ]  [[Trie] Design Add and Search Words Data Structure](https://leetcode.com/problems/design-add-and-search-words-data-structure/?envType=study-plan-v2&envId=top-interview-150)
+  - [ ]  [[Trie] Word Search II](https://leetcode.com/problems/word-search-ii/?envType=study-plan-v2&envId=top-interview-150)
+  - [ ]  [[Heap] Kth Largest Element in an Array](https://leetcode.com/problems/kth-largest-element-in-an-array/?envType=study-plan-v2&envId=top-interview-150)
+  - [ ]  [[Heap] Find K Pairs with Smallest Sums](https://leetcode.com/problems/find-k-pairs-with-smallest-sums/?envType=study-plan-v2&envId=top-interview-150)
+- ☑️ 선택
+  - [ ]  [[Heap] Find Median from Data Stream](https://leetcode.com/problems/find-median-from-data-stream/?envType=study-plan-v2&envId=top-interview-150)
 
 </div>
 </details>
