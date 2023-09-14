@@ -20,10 +20,10 @@ public class DesignAddandSearchWordsDataStructure {
             TreeNode cur = root;
             Queue<TreeNode> brunches = new LinkedList<>();
             for (int i = 0; i < word.length(); i++) {
-                if (!cur.children.containsKey(word.charAt(i))) {
-                    TreeNode child = new TreeNode();
-                    cur.children.put(word.charAt(i), child);
+                if (!cur.children.containsKey(word.charAt(i))) { // j
+                    brunches.offer(cur);
 
+                    TreeNode child = new TreeNode();
                     int size = brunches.size();
                     for (int j = 0; j < size; j++) {
                         TreeNode brunch = brunches.remove();
@@ -32,17 +32,13 @@ public class DesignAddandSearchWordsDataStructure {
                             brunch.children.put('.', child);
                         else brunches.offer(brunch.children.get('.'));
                     }
-
-                    if (!cur.children.containsKey('.'))
-                        cur.children.put('.', child);
-                    else brunches.offer(cur.children.get('.'));
-                } else brunches.offer(cur.children.get(word.charAt(i)));
+                } else {
+                    brunches.offer(cur.children.get(word.charAt(i)));
+                    brunches.offer(cur.children.get('.'));
+                }
                 cur = cur.children.get(word.charAt(i));
             }
             cur.isEndOfStr = true;
-            for (int i = 0; i < brunches.size(); i++) {
-                brunches.remove().isEndOfStr = true;
-            }
         }
 
         public boolean search(String word) {
@@ -67,14 +63,15 @@ public class DesignAddandSearchWordsDataStructure {
 
     public static void main(String[] args) {
         WordDictionary wordDictionary = new WordDictionary();
-        wordDictionary.addWord("bbbb");
-        System.out.println(wordDictionary.search("...."));
-        wordDictionary.addWord("wykzbvwdsoyfowqicymzd");
-        wordDictionary.addWord("mad");
-        System.out.println(wordDictionary.search("...."));
-        System.out.println(wordDictionary.search("wykzbvwdso..owqicymzd")); // return False
-        System.out.println(wordDictionary.search("...")); // return True
-        System.out.println(wordDictionary.search(".ad")); // return True
-        System.out.println(wordDictionary.search(".")); // return True
+
+        System.out.println(wordDictionary.search("a"));
+        System.out.println(wordDictionary.search(".at"));
+        wordDictionary.addWord("bat");
+        System.out.println(wordDictionary.search(".at"));
+        System.out.println(wordDictionary.search("an."));
+        System.out.println(wordDictionary.search("a.d."));
+        System.out.println(wordDictionary.search("b."));
+        System.out.println(wordDictionary.search("a.d"));
+        System.out.println(wordDictionary.search("."));
     }
 }
