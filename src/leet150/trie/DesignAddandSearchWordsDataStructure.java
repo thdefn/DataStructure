@@ -20,7 +20,8 @@ public class DesignAddandSearchWordsDataStructure {
             TreeNode cur = root;
             Queue<TreeNode> brunches = new LinkedList<>();
             for (int i = 0; i < word.length(); i++) {
-                if (!cur.children.containsKey(word.charAt(i))) { // j
+                // 현재 노드 자식 노드로 철자가 없음
+                if (!cur.children.containsKey(word.charAt(i))) {
                     brunches.offer(cur);
 
                     TreeNode child = new TreeNode();
@@ -33,6 +34,7 @@ public class DesignAddandSearchWordsDataStructure {
                         else brunches.offer(brunch.children.get('.'));
                     }
                 } else {
+                    // 현재 노드 자식 노드로 철자가 있음
                     brunches.offer(cur.children.get(word.charAt(i)));
                     brunches.offer(cur.children.get('.'));
                 }
@@ -62,16 +64,39 @@ public class DesignAddandSearchWordsDataStructure {
     }
 
     public static void main(String[] args) {
-        WordDictionary wordDictionary = new WordDictionary();
 
-        System.out.println(wordDictionary.search("a"));
-        System.out.println(wordDictionary.search(".at"));
-        wordDictionary.addWord("bat");
-        System.out.println(wordDictionary.search(".at"));
-        System.out.println(wordDictionary.search("an."));
-        System.out.println(wordDictionary.search("a.d."));
-        System.out.println(wordDictionary.search("b."));
-        System.out.println(wordDictionary.search("a.d"));
-        System.out.println(wordDictionary.search("."));
+        WordDictionary wordDictionary = new WordDictionary();
+        wordDictionary.addWord("bad");
+        wordDictionary.addWord("dad");
+        wordDictionary.addWord("mad");
+        System.out.println(wordDictionary.search("pad"));
+        System.out.println(wordDictionary.search("bad"));
+        System.out.println(wordDictionary.search(".ad"));
+        System.out.println(wordDictionary.search("b.."));
+
+        WordDictionary wd = new WordDictionary();
+        String str = "";
+        for (int i = 0; i < 27; i++) {
+            str += (char) (i + 'a');
+            wd.addWord(str);
+
+            String search = "";
+            for (int j = 0; j < str.length(); j++) {
+                search += ".";
+            }
+            System.out.println(wd.search(str) + " " + wd.search(search));
+        }
+
+        str = "";
+        System.out.println("다시 서치");
+        for (int i = 0; i < 27; i++) {
+            str += (char) (i + 'a');
+            String search = "";
+            for (int j = 0; j < str.length(); j++) {
+                search += ".";
+            }
+            System.out.println(wd.search(str) + " " + wd.search(search));
+        }
+
     }
 }
