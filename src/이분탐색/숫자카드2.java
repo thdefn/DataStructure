@@ -7,7 +7,9 @@ import java.util.Arrays;
 import java.util.Scanner;
 
 /**
- * 100000개 되는 출력은 BufferedWriter로 바꿔주자
+ * 100000개 되는 입력/출력은 BufferedWriter 로
+ *
+ * O(MLog(N))
  */
 public class 숫자카드2 {
     public static void main(String[] args) throws IOException {
