@@ -8,7 +8,7 @@ public class 두용액 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int N = sc.nextInt();
-        Integer[] numbers = new Integer[N];
+        int[] numbers = new int[N];
         for (int i = 0; i < N; i++) {
             numbers[i] = sc.nextInt();
         }
