@@ -1,4 +1,4 @@
-package 이분탐색.풀이;
+package 이분탐색.birarysearch.풀이;
 
 import java.io.BufferedWriter;
 import java.io.IOException;
