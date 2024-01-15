@@ -1,4 +1,4 @@
-package 이분탐색.parameticsearch;
+package 이분탐색.parametricsearch;
 
 import java.util.Scanner;
 
