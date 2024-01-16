@@ -6,7 +6,6 @@ import java.util.Scanner;
  * 만들 수 있는 최대 랜선의 길이를 구하는 프로그램
  * <p>
  * 길이가 작을수록 만드는 랜선의 개수 많아짐
- * 랜선의 길이는 최대 100만이고 1만개 까지 있을 수 있음
  */
 public class 랜선자르기 {
     public static void main(String[] args) {
@@ -14,15 +13,16 @@ public class 랜선자르기 {
         int K = sc.nextInt();
         int N = sc.nextInt();
         int[] heights = new int[K];
-        int minHeight = Integer.MAX_VALUE;
+        int maxHeight = -1;
         for (int i = 0; i < K; i++) {
             heights[i] = sc.nextInt();
-            minHeight = Math.min(minHeight, heights[i]);
+            maxHeight = Math.max(maxHeight, heights[i]);
         }
 
-        long l = 0;
-        long r = minHeight;
-        long answer = minHeight;
+        // 답이 될 수 있는 최대 길이는 maxHeight
+        long l = 1;
+        long r = maxHeight;
+        long answer = maxHeight;
         while (l <= r) {
             long m = (l + r) / 2;
             if (isPossible(heights, m, N)) {
@@ -36,7 +36,7 @@ public class 랜선자르기 {
     public static boolean isPossible(int[] heights, long cuttingHeight, int N) {
         long volume = 0;
         for (int h : heights)
-            volume += ((long) h / cuttingHeight);
+            volume += (h / cuttingHeight);
         return volume >= N;
     }
 }
