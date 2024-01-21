@@ -8,6 +8,8 @@ import java.util.Scanner;
  * 만든 랜선의 개수를 k 라고 할 때
  * 1. k < N : 랜선의 길이를 줄인다
  * 2. k >= N : 더 긴 길이의 랜선이 가능한지 살펴본다.
+ *
+ * ! 숫자의 최솟값, 숫자의 최댓값, 계산 과정의 오버플로우를 매번 염두에 두자
  */
 public class 랜선자르기 {
     public static void main(String[] args) {
