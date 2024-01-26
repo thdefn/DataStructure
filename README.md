@@ -110,3 +110,16 @@
   - [ ]  [[Graph BFS (Breadth-First Search)] Word Ladder](https://leetcode.com/problems/word-ladder/?envType=study-plan-v2&envId=top-interview-150)
 </div>
 </details>
+
+
+<details>
+<summary> 이분 탐색 </summary>
+<div markdown="1">
+
+- ✅ 필수
+  - [ ]  [예산](http://icpc.me/2512)
+  - [ ]  [기타 레슨](http://icpc.me/2343)
+  - [ ]  [보석 상자](http://icpc.me/2792)
+  - [ ]  [두 배열의 합](http://icpc.me/2143)
+</div>
+</details>
