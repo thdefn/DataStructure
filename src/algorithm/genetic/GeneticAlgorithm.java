@@ -1,3 +1,5 @@
+package algorithm.genetic;
+
 import java.io.*;
 import java.util.*;
 
