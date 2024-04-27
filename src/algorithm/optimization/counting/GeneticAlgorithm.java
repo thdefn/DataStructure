@@ -1,20 +1,21 @@
-package algorithm.genetic;
+package algorithm.optimization.counting;
 
 import java.io.*;
 import java.util.*;
 
-public class GeneticArgorithm2 {
+public class GeneticAlgorithm {
     public static Random random = new Random();
     public static int numberOfVertex;
     public static int[][] graph;
-    public static int POPULATION_SIZE = 300;
-    public static int TEST_SIZE = 3000;
-    public static int TRIAL = 1;
+    public static int POPULATION_SIZE = 500;
+    public static int GENERATION_SIZE = 3000;
+    public static int TRIAL = 30;
+    public static int TOURNAMENT_SIZE = 8;
 
     public static void main(String[] args) throws IOException {
-        System.setIn(new FileInputStream("./maxcut.in"));
+        System.setIn(new FileInputStream("src/algorithm/optimization/random_500.txt"));
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new FileWriter("./kpoint.out"));
+        BufferedWriter bw = new BufferedWriter(new FileWriter("src/algorithm/optimization/chimera/counting.out"));
         String[] line = br.readLine().split(" ");
         numberOfVertex = Integer.parseInt(line[0]);
         graph = new int[numberOfVertex + 1][numberOfVertex + 1];
@@ -26,41 +27,47 @@ public class GeneticArgorithm2 {
         }
 
         int trial = TRIAL;
+        List<Long> duration = new ArrayList<>();
         while (trial-- > 0) {
             List<Individual> population = new ArrayList<>();
+            long startTime = System.currentTimeMillis();
 
             for (int i = 0; i < POPULATION_SIZE; i++) {
                 population.add(new Individual(createGnome(), numberOfVertex, graph));
             }
 
-            int testSize = TEST_SIZE;
+            int generationSize = GENERATION_SIZE;
 
-            while (testSize-- > 0) {
-                int totalWeight = 0;
-                for (Individual i : population) {
-                    totalWeight += i.fitness;
-                }
-
+            while (generationSize-- > 0) {
                 List<Individual> newGeneration = new ArrayList<>();
-                // 80% 대체
-                for (int j = 0; j < POPULATION_SIZE * 0.8; j++) {
-                    Individual p1 = select(population, totalWeight);
-                    Individual p2 = select(population, totalWeight);
+                for (int j = 0; j < POPULATION_SIZE; j++) {
+                    Individual p1 = select(population);
+                    Individual p2 = select(population);
                     Individual child = crossover(p1, p2);
                     mutate(child);
                     newGeneration.add(child);
                 }
 
-                for (int i = 0; i < POPULATION_SIZE * 0.8; i++) {
-                    population.set(POPULATION_SIZE - 1 - i, newGeneration.get(i));
-                }
-                Collections.sort(population);
+                population = newGeneration;
+                countingSort(population);
+                //bw.write("generation : " + (GENERATION_SIZE - generationSize) + ", best : " + population.get(0).fitness + ", average : " + population.stream().mapToInt(i -> i.fitness).average().getAsDouble() + "\n");
             }
-            for (int v : population.get(0).getVertexeSet()) {
-                bw.write(v + " ");
-            }
+            long du = System.currentTimeMillis() - startTime;
+            duration.add(du);
         }
-        bw.flush();
+        LongSummaryStatistics statistics = duration.stream().mapToLong(i -> i).summaryStatistics();
+        double avg = statistics.getAverage();
+        double max = statistics.getMax();
+        double dev = 0;
+        double sumOfSqrOfDev = 0;
+
+        for (int i = 0; i < duration.size(); i++) {
+            dev = (duration.get(i) - avg);
+            sumOfSqrOfDev += Math.pow(dev, 2);
+        }
+        double var = sumOfSqrOfDev / statistics.getCount();
+        double std = Math.sqrt(var);
+        System.out.println("best : " + max + ", average : " + avg + ", std : " + std + "\n");
     }
 
 
@@ -103,20 +110,44 @@ public class GeneticArgorithm2 {
         return geneSet;
     }
 
-    public static Individual select(List<Individual> population, int totalWeight) {
-        double randomValue = random.nextDouble() * totalWeight;
 
-        int cumulativeWeight = 0;
-        for (int i = 0; i < population.size(); i++) {
-            cumulativeWeight += population.get(i).fitness;
-            if (randomValue <= cumulativeWeight) return population.get(i);
+    public static Individual select(List<Individual> population) {
+        List<Individual> tournament = new ArrayList<>();
+        for (int i = 0; i < TOURNAMENT_SIZE; i++) {
+            int randomIndex = random.nextInt(population.size());
+            tournament.add(population.get(randomIndex));
         }
-        return population.get(population.size() - 1);
 
+        Individual best = tournament.get(0);
+        int maxFitness = 0;
+        for (Individual i : tournament) {
+            if (i.fitness > maxFitness) {
+                best = i;
+                maxFitness = i.fitness;
+            }
+        }
+        return best;
+    }
+
+    private static void countingSort(List<Individual> li) {
+        Map<Integer, List<Individual>> map = new HashMap<>();
+        int max = 0;
+        for (Individual i : li) {
+            int fitness = i.fitness;
+            max = Math.max(fitness, max);
+            List<Individual> l = map.getOrDefault(fitness, new ArrayList<>());
+            l.add(i);
+            map.put(fitness, l);
+        }
+        li.clear();
+        for (int k = max; k >= 0; k--) {
+            if (map.containsKey(k))
+                li.addAll(map.get(k));
+        }
     }
 }
 
-class Individual implements Comparable<Individual> {
+class Individual {
     List<Integer> vertexes;
     int fitness;
 
@@ -139,12 +170,5 @@ class Individual implements Comparable<Individual> {
             }
         }
         return sum;
-    }
-
-    @Override
-    public int compareTo(Individual o) {
-        if (o.fitness == this.fitness)
-            return this.vertexes.size() - o.vertexes.size();
-        return o.fitness - this.fitness;
     }
 }

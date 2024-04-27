@@ -14,7 +14,7 @@ public class GeneticAlgorithm {
     public static void main(String[] args) throws IOException {
         System.setIn(new FileInputStream("./maxcut.in"));
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new FileWriter("./maxcut.out"));
+        BufferedWriter bw = new BufferedWriter(new FileWriter("./kpoint.out"));
         String[] line = br.readLine().split(" ");
         numberOfVertex = Integer.parseInt(line[0]);
         graph = new int[numberOfVertex + 1][numberOfVertex + 1];

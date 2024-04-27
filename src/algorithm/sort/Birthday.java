@@ -16,9 +16,9 @@ public class Birthday {
     }
 
     public static void main(String[] args) throws IOException {
-        System.setIn(new FileInputStream("./birthday.in"));
+        System.setIn(new FileInputStream("src/algorithm/sort/birthday.in"));
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new FileWriter("./birthday.out"));
+        BufferedWriter bw = new BufferedWriter(new FileWriter("src/algorithm/sort/birthday.out"));
         String line;
         ArrayList<Person> days = new ArrayList<>();
         while ((line = br.readLine()) != null) {
@@ -27,6 +27,7 @@ public class Birthday {
         }
 
         for (Person p : mergeSort(days, 0, days.size() - 1)) {
+            System.out.print(p.birth + " ");
             bw.write(String.format("%s %04d\n", p.name, p.birth));
         }
         bw.flush();

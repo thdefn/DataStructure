@@ -1,20 +1,21 @@
-package algorithm.genetic;
+package algorithm.optimization.tornament;
 
 import java.io.*;
 import java.util.*;
 
-public class GeneticArgorithm2 {
+public class GeneticAlgorithm {
     public static Random random = new Random();
     public static int numberOfVertex;
     public static int[][] graph;
-    public static int POPULATION_SIZE = 300;
-    public static int TEST_SIZE = 3000;
-    public static int TRIAL = 1;
+    public static int POPULATION_SIZE = 500;
+    public static int GENERATION_SIZE = 3000;
+    public static int TRIAL = 30;
+    public static int TOURNAMENT_SIZE = 8;
 
     public static void main(String[] args) throws IOException {
-        System.setIn(new FileInputStream("./maxcut.in"));
+        System.setIn(new FileInputStream("src/algorithm/optimization/tornament/maxcut.in"));
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new FileWriter("./kpoint.out"));
+        BufferedWriter bw = new BufferedWriter(new FileWriter("src/algorithm/optimization/tornament/kpoint.out"));
         String[] line = br.readLine().split(" ");
         numberOfVertex = Integer.parseInt(line[0]);
         graph = new int[numberOfVertex + 1][numberOfVertex + 1];
@@ -33,32 +34,26 @@ public class GeneticArgorithm2 {
                 population.add(new Individual(createGnome(), numberOfVertex, graph));
             }
 
-            int testSize = TEST_SIZE;
+            int generationSize = GENERATION_SIZE;
 
-            while (testSize-- > 0) {
-                int totalWeight = 0;
-                for (Individual i : population) {
-                    totalWeight += i.fitness;
-                }
-
+            while (generationSize-- > 0) {
+                int generation = GENERATION_SIZE - generationSize;
                 List<Individual> newGeneration = new ArrayList<>();
-                // 80% 대체
-                for (int j = 0; j < POPULATION_SIZE * 0.8; j++) {
-                    Individual p1 = select(population, totalWeight);
-                    Individual p2 = select(population, totalWeight);
+                for (int j = 0; j < POPULATION_SIZE; j++) {
+                    Individual p1 = select(population);
+                    Individual p2 = select(population);
                     Individual child = crossover(p1, p2);
                     mutate(child);
                     newGeneration.add(child);
                 }
-
-                for (int i = 0; i < POPULATION_SIZE * 0.8; i++) {
-                    population.set(POPULATION_SIZE - 1 - i, newGeneration.get(i));
-                }
+                population = newGeneration;
                 Collections.sort(population);
+//                bw.write("generation : " + generation + ", best : " + population.get(0).fitness + ", average : " + population.stream().mapToInt(i -> i.fitness).average().getAsDouble() + "\n");
             }
-            for (int v : population.get(0).getVertexeSet()) {
-                bw.write(v + " ");
-            }
+//            for (int v : population.get(0).getVertexeSet()) {
+//                bw.write(v + " ");
+//            }
+            bw.write("trial : " + (TRIAL - trial) + ", best : " + population.get(0).fitness + ", average : " + population.stream().mapToInt(i -> i.fitness).average().getAsDouble() + "\n");
         }
         bw.flush();
     }
@@ -103,7 +98,7 @@ public class GeneticArgorithm2 {
         return geneSet;
     }
 
-    public static Individual select(List<Individual> population, int totalWeight) {
+    private static Individual select(List<Individual> population, int totalWeight) {
         double randomValue = random.nextDouble() * totalWeight;
 
         int cumulativeWeight = 0;
@@ -113,6 +108,24 @@ public class GeneticArgorithm2 {
         }
         return population.get(population.size() - 1);
 
+    }
+
+    private static Individual select(List<Individual> population) {
+        List<Individual> tournament = new ArrayList<>();
+        for (int i = 0; i < TOURNAMENT_SIZE; i++) {
+            int randomIndex = random.nextInt(population.size());
+            tournament.add(population.get(randomIndex));
+        }
+
+        Individual best = tournament.get(0);
+        int maxFitness = 0;
+        for (Individual i : tournament) {
+            if (i.fitness > maxFitness) {
+                best = i;
+                maxFitness = i.fitness;
+            }
+        }
+        return best;
     }
 }
 
@@ -143,8 +156,6 @@ class Individual implements Comparable<Individual> {
 
     @Override
     public int compareTo(Individual o) {
-        if (o.fitness == this.fitness)
-            return this.vertexes.size() - o.vertexes.size();
         return o.fitness - this.fitness;
     }
 }

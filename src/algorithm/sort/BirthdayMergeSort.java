@@ -18,9 +18,9 @@ public class BirthdayMergeSort {
     }
 
     public static void main(String[] args) throws IOException {
-        System.setIn(new FileInputStream("src/algorithm/birthday.in"));
+        System.setIn(new FileInputStream("src/algorithm/sort/birthday.in"));
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new FileWriter("src/algorithm/birthday.out"));
+        BufferedWriter bw = new BufferedWriter(new FileWriter("src/algorithm/sort/birthday.out"));
         String line;
         ArrayList<Person> days = new ArrayList<>();
         while ((line = br.readLine()) != null) {
@@ -34,11 +34,9 @@ public class BirthdayMergeSort {
         for (int i = 0; i < 40; i++) {
             long startTime = System.nanoTime();
             mergeSort(days, 0, days.size() - 1);
-            Runtime.getRuntime().gc();
-            long usedMemory = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
-            long estimatedTime = System.nanoTime() - startTime;
-            totalEstimatedTime += estimatedTime;
-            totalUsedMemory += usedMemory;
+            for (Person p : days){
+                System.out.println(p.birth);
+            }
         }
         System.out.println("merge sort memory usage: " + totalUsedMemory/40 + " bytes");
         System.out.println("merge sort estimated time: " + totalEstimatedTime/40);

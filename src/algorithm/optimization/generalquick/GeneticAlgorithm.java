@@ -1,20 +1,21 @@
-package algorithm.genetic;
+package algorithm.optimization.generalquick;
 
 import java.io.*;
 import java.util.*;
 
-public class GeneticArgorithm2 {
+public class GeneticAlgorithm {
     public static Random random = new Random();
     public static int numberOfVertex;
     public static int[][] graph;
-    public static int POPULATION_SIZE = 300;
-    public static int TEST_SIZE = 3000;
+    public static int POPULATION_SIZE = 500;
+    public static int GENERATION_SIZE = 2900;
     public static int TRIAL = 1;
+    public static int TOURNAMENT_SIZE = 8;
 
     public static void main(String[] args) throws IOException {
-        System.setIn(new FileInputStream("./maxcut.in"));
+        System.setIn(new FileInputStream("src/algorithm/optimization/generalquick/maxcut.in"));
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        BufferedWriter bw = new BufferedWriter(new FileWriter("./kpoint.out"));
+        BufferedWriter bw = new BufferedWriter(new FileWriter("src/algorithm/optimization/generalquick/maxcut.out"));
         String[] line = br.readLine().split(" ");
         numberOfVertex = Integer.parseInt(line[0]);
         graph = new int[numberOfVertex + 1][numberOfVertex + 1];
@@ -33,34 +34,30 @@ public class GeneticArgorithm2 {
                 population.add(new Individual(createGnome(), numberOfVertex, graph));
             }
 
-            int testSize = TEST_SIZE;
+            int generationSize = GENERATION_SIZE;
+            long startTime = System.currentTimeMillis();
 
-            while (testSize-- > 0) {
-                int totalWeight = 0;
-                for (Individual i : population) {
-                    totalWeight += i.fitness;
-                }
-
+            while (generationSize-- > 0) {
                 List<Individual> newGeneration = new ArrayList<>();
-                // 80% 대체
-                for (int j = 0; j < POPULATION_SIZE * 0.8; j++) {
-                    Individual p1 = select(population, totalWeight);
-                    Individual p2 = select(population, totalWeight);
+                for (int j = 0; j < POPULATION_SIZE; j++) {
+                    Individual p1 = select(population);
+                    Individual p2 = select(population);
                     Individual child = crossover(p1, p2);
                     mutate(child);
                     newGeneration.add(child);
                 }
 
-                for (int i = 0; i < POPULATION_SIZE * 0.8; i++) {
-                    population.set(POPULATION_SIZE - 1 - i, newGeneration.get(i));
-                }
-                Collections.sort(population);
-            }
+                population = newGeneration;
+                quickSort(population, 0, population.size() - 1);
+             }
             for (int v : population.get(0).getVertexeSet()) {
                 bw.write(v + " ");
             }
+            bw.flush();
+            System.out.println(population.get(0).fitness);
+            long du = System.currentTimeMillis() - startTime;
+            System.out.println(du);
         }
-        bw.flush();
     }
 
 
@@ -103,20 +100,56 @@ public class GeneticArgorithm2 {
         return geneSet;
     }
 
-    public static Individual select(List<Individual> population, int totalWeight) {
-        double randomValue = random.nextDouble() * totalWeight;
-
-        int cumulativeWeight = 0;
-        for (int i = 0; i < population.size(); i++) {
-            cumulativeWeight += population.get(i).fitness;
-            if (randomValue <= cumulativeWeight) return population.get(i);
+    public static Individual select(List<Individual> population) {
+        List<Individual> tournament = new ArrayList<>();
+        for (int i = 0; i < TOURNAMENT_SIZE; i++) {
+            int randomIndex = random.nextInt(population.size());
+            tournament.add(population.get(randomIndex));
         }
-        return population.get(population.size() - 1);
 
+        Individual best = tournament.get(0);
+        int maxFitness = 0;
+        for (Individual i : tournament) {
+            if (i.fitness > maxFitness) {
+                best = i;
+                maxFitness = i.fitness;
+            }
+        }
+        return best;
+    }
+
+    private static void quickSort(List<Individual> array, int begin, int end) {
+        if (begin < end) {
+            int part = partition(array, begin, end);
+            quickSort(array, begin, part - 1);
+            quickSort(array, part + 1, end);
+        }
+    }
+
+    private static int partition(List<Individual> array, int begin, int end) {
+        int pivot = array.get(end).fitness;
+        int i = (begin - 1);
+
+        for (int j = begin; j < end; j++) {
+            if (array.get(j).fitness >= pivot) {
+                i++;
+
+                if (i != j) swap(array, i, j);
+            }
+        }
+
+        swap(array, end, i + 1);
+        return i + 1;
+    }
+
+    private static void swap(List<Individual> array, int indexA, int indexB) {
+        Individual temp = array.get(indexA);
+        array.set(indexA, array.get(indexB));
+        array.set(indexB, temp);
     }
 }
 
-class Individual implements Comparable<Individual> {
+class Individual {
     List<Integer> vertexes;
     int fitness;
 
@@ -139,12 +172,5 @@ class Individual implements Comparable<Individual> {
             }
         }
         return sum;
-    }
-
-    @Override
-    public int compareTo(Individual o) {
-        if (o.fitness == this.fitness)
-            return this.vertexes.size() - o.vertexes.size();
-        return o.fitness - this.fitness;
     }
 }
