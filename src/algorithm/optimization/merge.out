@@ -1,0 +1,11 @@
+trial : 1, best : 2235, average : 2211.458
+trial : 2, best : 2168, average : 2147.554
+trial : 3, best : 2203, average : 2182.05
+trial : 4, best : 2197, average : 2176.734
+trial : 5, best : 2225, average : 2205.056
+trial : 6, best : 2361, average : 2332.734
+trial : 7, best : 2141, average : 2120.66
+trial : 8, best : 2286, average : 2264.908
+trial : 9, best : 2256, average : 2231.368
+trial : 10, best : 2365, average : 2337.552
+bestAverage : OptionalDouble[2243.7]bestAverage : OptionalDouble[2221.0074]

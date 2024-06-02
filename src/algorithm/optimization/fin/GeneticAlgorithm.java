@@ -80,6 +80,48 @@ public class GeneticAlgorithm {
         return new Individual(c1, numberOfVertex, graph);
     }
 
+    public Individual ccrossover(Individual p1, Individual p2) {
+        int size = Math.min(p1.vertexes.size(), p2.vertexes.size());
+        List<Integer> c1 = new ArrayList<>(Collections.nCopies(size, -1));
+
+        boolean[] visited = new boolean[size];
+        int cycleStartIndex = 0;
+
+        while (c1.contains(-1)) {
+            int currentIndex = cycleStartIndex;
+            while (!visited[currentIndex] && currentIndex != -1) {
+                c1.set(currentIndex, p1.vertexes.get(currentIndex));
+                visited[currentIndex] = true;
+
+                int gene = p2.vertexes.get(currentIndex);
+                currentIndex = p1.vertexes.indexOf(gene);
+
+                if (currentIndex == -1 || currentIndex >= size) {
+                    break;
+                }
+            }
+
+            // Find the next starting index for the cycle
+            while (cycleStartIndex < size && visited[cycleStartIndex]) {
+                cycleStartIndex++;
+            }
+
+            // Handle the case where all remaining indices have been visited
+            if (cycleStartIndex >= size) {
+                break;
+            }
+        }
+
+        // Fill the remaining positions with the opposite parent's genes
+        for (int i = 0; i < size; i++) {
+            if (c1.get(i) == -1) {
+                c1.set(i, p2.vertexes.get(i));
+            }
+        }
+
+        return new Individual(c1, numberOfVertex, graph);
+    }
+
 
     public static int getRandomCardinality() {
         return random.nextInt(numberOfVertex - 1) + 1;
